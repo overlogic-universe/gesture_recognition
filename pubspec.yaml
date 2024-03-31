@@ -64,6 +64,8 @@ flutter:
   assets:
     - assets/labels.txt
     - assets/model_unquant.tflite
+    - assets/models/bisindo/labels.txt
+    - assets/models/bisindo/model.tflite
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

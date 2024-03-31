@@ -132,8 +132,8 @@ class CamController extends GetxController with WidgetsBindingObserver {
 
   Future<void> _initTensorFlow() async {
     await Tflite.loadModel(
-        model: 'assets/model_unquant.tflite',
-        labels: 'assets/labels.txt',
+        model: 'assets/models/bisindo/model.tflite',
+        labels: 'assets/models/bisindo/labels.txt',
         numThreads: 1,
         isAsset: true,
         useGpuDelegate: false);
@@ -154,7 +154,7 @@ class CamController extends GetxController with WidgetsBindingObserver {
         asynch: true // defaults to true
         );
 
-    if (recognitions != null) {
+    if (recognitions != null && recognitions.isNotEmpty) {
       who = recognitions[0]["label"];
       double confidence = recognitions[0]["confidence"];
       percentage = '${(confidence * 100).toStringAsFixed(0)}%';
