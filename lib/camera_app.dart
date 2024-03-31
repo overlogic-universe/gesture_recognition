@@ -13,24 +13,34 @@ class CameraApp extends StatelessWidget {
     return GetBuilder<CamController>(
       builder: (_) => !controller.cameraController.value.isInitialized
           ? const Scaffold(body: Center(child: CircularProgressIndicator()))
-          : _buildCamera(controller),
+          : _buildCamera(context, controller),
     );
   }
 
-  Scaffold _buildCamera(CamController controller) {
+  Scaffold _buildCamera(BuildContext context, CamController controller) {
     return Scaffold(
       body: SafeArea(
-        child: Stack(
-          children: [
-            CameraPreview(controller.cameraController),
-            _buildFlipCameaButton(controller)
-          ],
+        child: SizedBox(
+          height: MediaQuery.sizeOf(context).height,
+          width: MediaQuery.sizeOf(context).width,
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  CameraPreview(controller.cameraController),
+                  _buildFlipCameraButton(controller)
+                ],
+              ),
+              Text(controller.who),
+              Text(controller.percentage),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Positioned _buildFlipCameaButton(CamController controller) {
+  Positioned _buildFlipCameraButton(CamController controller) {
     return Positioned(
       top: 20,
       right: 20,
