@@ -17,7 +17,7 @@ class CamController extends GetxController with WidgetsBindingObserver {
   void onInit() async {
     WidgetsBinding.instance.addObserver(this);
     mode = FlashMode.off;
-    cameraController = CameraController(cameras[0], ResolutionPreset.max);
+    cameraController = CameraController(cameras[1], ResolutionPreset.max);
     cameraValue = await cameraController.initialize();
     update();
     super.onInit();
@@ -93,9 +93,9 @@ class CamController extends GetxController with WidgetsBindingObserver {
     isFrontCamera.toggle();
     isFlashOn.value = false;
     if (isFrontCamera.value) {
-      cameraPositioned.value = 0;
-    } else {
       cameraPositioned.value = 1;
+    } else {
+      cameraPositioned.value = 0;
     }
     try {
       cameraController = CameraController(
