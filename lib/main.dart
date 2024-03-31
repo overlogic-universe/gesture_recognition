@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gesture_recognition/camera_app.dart';
 import 'package:camera/camera.dart';
+import 'package:get/get.dart';
 
 late List<CameraDescription> cameras;
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const GetMaterialApp(
       home: CameraApp(),
     );
   }
