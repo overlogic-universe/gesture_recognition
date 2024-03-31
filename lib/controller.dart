@@ -154,11 +154,17 @@ class CamController extends GetxController with WidgetsBindingObserver {
         asynch: true // defaults to true
         );
 
-    if (recognitions != null && recognitions.isNotEmpty) {
-      who = recognitions[0]["label"];
-      double confidence = recognitions[0]["confidence"];
-      percentage = '${(confidence * 100).toStringAsFixed(0)}%';
-      update();
+    if (recognitions != null) {
+      if (recognitions.isNotEmpty) {
+        who = recognitions[0]["label"];
+        double confidence = recognitions[0]["confidence"];
+        percentage = '${(confidence * 100).toStringAsFixed(0)}%';
+        update();
+      } else {
+        who = 'Unexpectd error';
+        percentage = '';
+        update();
+      }
     }
   }
 }
